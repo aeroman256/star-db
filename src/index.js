@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
+import App from './components/app';
 
-ReactDOM.render(<h1>Star DB</h1>, document.getElementById('root'));
-// https://swapi.co/api/people/1/
+
+ReactDom.render(<App />, document.getElementById('root'))
