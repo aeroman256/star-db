@@ -42,10 +42,8 @@ export default class SwapiService {
     }
 
     _extractId(item) {
-        console.log("---", item)
         const idRegExp = /\/([0-9]*)\/$/;
         const res = item.url.match(idRegExp)[1];
-        console.log("+++", res)
         return res
       }
 
@@ -67,8 +65,8 @@ export default class SwapiService {
             id: this._extractId(person),
             name: person.name,
             gender: person.gender,
-            birthYear: person.birthYear,
-            eyeColor: person.eyeColor
+            birthYear: person.birth_year,
+            eyeColor: person.eye_color
         } 
 
 

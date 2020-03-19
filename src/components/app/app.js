@@ -23,7 +23,7 @@ export default class App extends Component {
             <div>
                 <Header />
                 <RandomPlanet />
-                <div className="row-mb-2">
+                <div className="row">
                     <div className="col-md-6">
                         <ItemList onItemSelected={this.onPersonSelected}/>
                     </div>
