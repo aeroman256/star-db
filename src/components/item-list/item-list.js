@@ -27,7 +27,7 @@ export default class ItemList extends Component {
             return (
                 <li className='list-group-item'
                     key={ id }
-                    onClick = { this.props.onItemSelected}
+                    onClick = {() => this.props.onItemSelected(id)}
                     >
                     { name }
                 </li>
@@ -38,9 +38,7 @@ export default class ItemList extends Component {
 
     render() {
         const { personList } = this.state
-        
-
-        console.log('---', personList)
+    
         if (!personList) {
             return (
                 <Spinner />
