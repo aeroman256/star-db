@@ -17,7 +17,14 @@ export default class RandomPlanet extends Component {
 
     componentDidMount() {
         this.updatePlanet()
-        //this.interval = setInterval(this.updatePlanet, 1100)
+        this.interval = setInterval(this.updatePlanet, 1100)
+    }
+
+    componentWillUnmount(){
+        // компонент будет удален
+        // используеться для очистки ресурсов(таймеры, интервалы, запросы к серверу)
+        // в момент выхова DOM все еще находится на странице
+        clearInterval(this.interval)
     }
 
     onPlanetLoaded = (planet) => {

@@ -12,7 +12,6 @@ const PersonView = ({person}) => {
         } = person
     return (
         <React.Fragment>
-            <div className="person-details card">
                 <img className="person-image"
                 src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
                 alt="person"/>
@@ -33,7 +32,6 @@ const PersonView = ({person}) => {
                     </li>
                 </ul>
                 </div>
-            </div>
         </React.Fragment>
     )
 }

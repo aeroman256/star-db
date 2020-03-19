@@ -20,6 +20,9 @@ export default class PersonDetails extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.personId !== prevProps.personId) {//critical!!!
+            this.setState({
+                loading: true
+            })
             this.updatePerson();
         }
     }
@@ -46,27 +49,15 @@ export default class PersonDetails extends Component {
         if (!this.state.person) {
             return <span>Select a person from a list</span>
         }
-        console.log(this.state.person)
-        // const {
-        //     id,
-        //     name,
-        //     gender,
-        //     birthYear,
-        //     eyeColor,
-        // } = this.state.person
-        console.log("Loadinr", loading)
         const spinner = loading ? <Spinner /> : null
-        const content = !loading ? <PersonView 
-                                       person={this.state.person} /> :
-                                    null
+        const content = !loading ? <PersonView  person={this.state.person} /> : null
         return (
-            <React.Fragment>
-                {spinner}
-                {content}
-            </React.Fragment>
+            <div className="person-details card">
+                <React.Fragment>
+                    {spinner}
+                    {content}
+                </React.Fragment>
+            </div>
         )
     }
 }
-
-//Отдельный компонент
-// => id => render
