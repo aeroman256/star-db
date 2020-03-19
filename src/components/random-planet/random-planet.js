@@ -43,8 +43,6 @@ export default class RandomPlanet extends Component {
 
         
     render() {
-        //console.log("render")        
-        //const { planet: {id, name,population, rotationPeriod, diameter }, loading } = this.state
         const { planet, loading, error } = this.state
 
         const hasData = !(loading || error)

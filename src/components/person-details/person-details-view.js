@@ -2,11 +2,14 @@ import React from 'react'
 
 import './person-details.css';
 
-const PersonView = ({id,
-    name,
-    gender,
-    birthYear,
-    eyeColor}) => {
+const PersonView = ({person}) => {
+    const {
+            id,
+            name,
+            gender,
+            birthYear,
+            eyeColor
+        } = person
     return (
         <React.Fragment>
             <div className="person-details card">

@@ -47,21 +47,17 @@ export default class PersonDetails extends Component {
             return <span>Select a person from a list</span>
         }
         console.log(this.state.person)
-        const {
-            id,
-            name,
-            gender,
-            birthYear,
-            eyeColor,
-        } = this.state.person
+        // const {
+        //     id,
+        //     name,
+        //     gender,
+        //     birthYear,
+        //     eyeColor,
+        // } = this.state.person
         console.log("Loadinr", loading)
         const spinner = loading ? <Spinner /> : null
         const content = !loading ? <PersonView 
-                                        id={ id }
-                                        name ={ name }
-                                        gender={ gender }
-                                        birthYear={ birthYear }
-                                        eyeColor={ eyeColor } /> :
+                                       person={this.state.person} /> :
                                     null
         return (
             <React.Fragment>
