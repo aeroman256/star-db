@@ -4,6 +4,8 @@ import Header from '../header'
 import ItemList from '../item-list'
 import RandomPlanet from '../random-planet'
 import PersonDetails from '../person-details'
+import ErrorIndicator from '../error-indicator'
+import ErrorButton from '../error-button'
 
 import './app.css'
 
@@ -28,9 +30,20 @@ export default class App extends Component {
         });
     };
 
-
+    componentDidCatch() {
+        console.log("componentDidCatch")
+        this.setState({
+            hasError: true
+        })
+    }
     
     render() {
+        const { hasError } = this.state
+        if (hasError) {
+            return(
+                <ErrorIndicator />
+            )
+        }
         const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null
         return (
             <div>
@@ -42,6 +55,7 @@ export default class App extends Component {
                         onClick={this.toggleRandomPlanet}>
                         Toggle Random Planet
                     </button>
+                    <ErrorButton />
                 </div>
                 <div className="row">
                
