@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 
 import Header from '../header'
 import PeoplePage from '../people-page'
-//import ItemList from '../item-list'
+import ItemList from '../item-list'
 import RandomPlanet from '../random-planet'
-//import PersonDetails from '../person-details'
+import PersonDetails from '../person-details'
 import ErrorIndicator from '../error-indicator'
 import ErrorButton from '../error-button'
+import SwapiService from '../../services/swapi-service'
 
 import './app.css'
 
 
 export default class App extends Component {
+
+    swapiService = new SwapiService()
+
     state = {
         showRandomPlanet: true,
         hasError: false,
@@ -56,19 +60,16 @@ export default class App extends Component {
                 </div>
 
                 <PeoplePage />
-                <PeoplePage />
-                <PeoplePage />
-                <PeoplePage />
-                {/* 
-                PeoplePage
                 <div className="row">
                     <div className="col-md-6">
-                        <ItemList onItemSelected={this.onPersonSelected}/>
+                        <ItemList 
+                            onItemSelected={this.onPersonSelected}
+                            getData={this.swapiService.getAllPlanets}/>
                     </div>
                     <div className="col-md-6">
                         <PersonDetails personId={ this.state.selectedPerson }/>
                     </div>
-                </div> */}
+                </div>
             </div>
         )
     }
