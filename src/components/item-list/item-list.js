@@ -4,15 +4,12 @@ import Spinner from '../spinner'
 import './item-list.css'
 
 export default class ItemList extends Component {
-    // swapiService = new SwapiService()
-
     state = {
         itemList: null
     }
 
     componentDidMount() {
         const { getData } = this.props
-        // this.swapiService.getAllPeople()
         getData()
             .then((itemList) => {
                 this.setState({
@@ -22,18 +19,19 @@ export default class ItemList extends Component {
             .catch(this.Error)
     }
 
-    itemListRender = (arr) => {
-        const res = arr.map(({id, name}) => {
+    renderItems = (arr) => {
+        return arr.map((item) => {
+            const label = this.props.renderItem(item)
+            const { id } = item
             return (
                 <li className='list-group-item'
                     key={ id }
                     onClick = {() => this.props.onItemSelected(id)}
                     >
-                    { name }
+                    { label }
                 </li>
             )
         })
-        return res
     }
 
     render() {
@@ -44,7 +42,7 @@ export default class ItemList extends Component {
                 <Spinner />
             )
         }
-        const items = this.itemListRender(itemList)
+        const items = this.renderItems(itemList)
 
         return (
             <div>
