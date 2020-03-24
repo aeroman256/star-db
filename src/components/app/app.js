@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import Header from '../header'
-import ItemList from '../item-list'
+import PeoplePage from '../people-page'
+//import ItemList from '../item-list'
 import RandomPlanet from '../random-planet'
-import PersonDetails from '../person-details'
+//import PersonDetails from '../person-details'
 import ErrorIndicator from '../error-indicator'
 import ErrorButton from '../error-button'
 
@@ -16,11 +17,7 @@ export default class App extends Component {
         hasError: false,
         selectedPerson: null
     }
-    onPersonSelected = (id) => {
-        this.setState({
-            selectedPerson: id 
-        })
-    }
+   
 
     toggleRandomPlanet = () => {
         this.setState((state) => {
@@ -57,16 +54,21 @@ export default class App extends Component {
                     </button>
                     <ErrorButton />
                 </div>
+
+                <PeoplePage />
+                <PeoplePage />
+                <PeoplePage />
+                <PeoplePage />
+                {/* 
+                PeoplePage
                 <div className="row">
-               
-                
                     <div className="col-md-6">
                         <ItemList onItemSelected={this.onPersonSelected}/>
                     </div>
                     <div className="col-md-6">
                         <PersonDetails personId={ this.state.selectedPerson }/>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }

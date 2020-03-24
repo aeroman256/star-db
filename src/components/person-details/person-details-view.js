@@ -1,4 +1,5 @@
 import React from 'react'
+import ErrorButton from '../error-button'
 
 import './person-details.css';
 
@@ -31,6 +32,7 @@ const PersonView = ({person}) => {
                         <span>{ eyeColor }</span>
                     </li>
                 </ul>
+                <ErrorButton />
                 </div>
         </React.Fragment>
     )
