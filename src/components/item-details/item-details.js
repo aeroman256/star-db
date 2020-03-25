@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PersonView from './person-details-view'
+import ItemView from './person-details-view'
 import Spinner from '../spinner'
 import SwapiService from '../../services/swapi-service'
 
-import './person-details.css';
+import './item-details.css';
 
 export default class ItemDetails extends Component {
     
@@ -19,7 +19,7 @@ export default class ItemDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.personId !== prevProps.personId) {//critical!!!
+        if (this.props.itemId !== prevProps.itemId) {//critical!!!
             this.setState({
                 loading: true
             })
@@ -35,12 +35,12 @@ export default class ItemDetails extends Component {
     }
 
     updatePerson() {
-        const { personId } = this.props
-        if (!personId) {
+        const { itemId } = this.props
+        if (!itemId) {
             return
         }
         this.swapiService
-            .getPerson(personId)
+            .getPerson(itemId)
             .then(this.onPersonLoaded)
     }
 
@@ -50,7 +50,7 @@ export default class ItemDetails extends Component {
             return <span>Select a person from a list</span>
         }
         const spinner = loading ? <Spinner /> : null
-        const content = !loading ? <PersonView  person={this.state.item} /> : null
+        const content = !loading ? <ItemView  person={this.state.item} /> : null
         return (
             <div className="person-details card">
                 <React.Fragment>

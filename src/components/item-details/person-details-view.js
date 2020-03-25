@@ -1,9 +1,9 @@
 import React from 'react'
 import ErrorButton from '../error-button'
 
-import './person-details.css';
+import './item-details.css';
 
-const PersonView = ({ item }) => {
+const ItemView = ({ item }) => {
     const {
             id,
             name,
@@ -38,4 +38,4 @@ const PersonView = ({ item }) => {
     )
 }
 
-export default PersonView
+export default ItemView

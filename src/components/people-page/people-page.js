@@ -9,7 +9,7 @@ import ErrorBoundry from '../error-boundry'
 export default class PeoplePage extends Component {
     swapiService = new SwapiService()
     state = {
-        selectedPerson: 2,
+        itemPerson: 2,
     }
 
     onItemSelected = (id) => {
@@ -30,7 +30,7 @@ export default class PeoplePage extends Component {
 
         const itemDetails = (
             <ErrorBoundry>
-                <ItemDetails personId={ this.state.selectedPerson }/>
+                <ItemDetails itemId={ this.state.selectedItem }/>
             </ErrorBoundry>
         )
 
