@@ -5,12 +5,12 @@ import SwapiService from '../../services/swapi-service'
 
 import './person-details.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
     
     swapiService = new SwapiService()
 
     state = {
-        person: null,
+        item: null,
         loading: true
     }
 
@@ -27,9 +27,9 @@ export default class PersonDetails extends Component {
         }
     }
 
-    onPersonLoaded = (person) => {
+    onPersonLoaded = (item) => {
         this.setState({
-            person,
+            item,
             loading: false
         })
     }
@@ -46,11 +46,11 @@ export default class PersonDetails extends Component {
 
     render() {
         const { loading } = this.state
-        if (!this.state.person) {
+        if (!this.state.item) {
             return <span>Select a person from a list</span>
         }
         const spinner = loading ? <Spinner /> : null
-        const content = !loading ? <PersonView  person={this.state.person} /> : null
+        const content = !loading ? <PersonView  person={this.state.item} /> : null
         return (
             <div className="person-details card">
                 <React.Fragment>

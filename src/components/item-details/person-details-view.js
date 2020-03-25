@@ -3,14 +3,14 @@ import ErrorButton from '../error-button'
 
 import './person-details.css';
 
-const PersonView = ({person}) => {
+const PersonView = ({ item }) => {
     const {
             id,
             name,
             gender,
             birthYear,
             eyeColor
-        } = person
+        } = item
     return (
         <React.Fragment>
                 <img className="person-image"
