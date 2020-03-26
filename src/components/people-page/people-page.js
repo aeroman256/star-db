@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ItemList from '../item-list'
 import ItemDetails from '../item-details'
-import ErrorIndicator from '../error-indicator'
 import SwapiService from '../../services/swapi-service'
 import Row from '../row'
+import ErrorBoundry from '../error-boundry'
 
 
 export default class PeoplePage extends Component {
@@ -19,27 +19,14 @@ export default class PeoplePage extends Component {
         })
     }
 
-    componentDidCatch() {
-        this.setState({
-            hasError: true
-        })
-    }
-
-    
-    
-
     render() {
-        const { hasError } = this.state
-
-        if (hasError) {
-            return <ErrorIndicator />
-        }
-
         const itemList = (
             <ItemList 
                                 onItemSelected={this.onItemSelected}
                                 getData={this.swapiService.getAllPeople}
-                                renderItem={({name, gender, birthYear}) => `${name} - ${gender}, ${birthYear}`}/>
+                                >
+                                    {({name, gender, birthYear}) => `${name} - ${gender}, ${birthYear}`}
+                                </ItemList>
         )
 
         const itemDetails = (
@@ -47,7 +34,9 @@ export default class PeoplePage extends Component {
         )
 
         return (
-            <Row left={itemList} right={itemDetails}/>
+            <ErrorBoundry>
+                <Row left={itemList} right={itemDetails}/>
+            </ErrorBoundry>
         )
     }
 }
