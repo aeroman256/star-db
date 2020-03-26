@@ -1,21 +1,21 @@
 import React from 'react'
 import ErrorButton from '../error-button'
 
-import './person-details.css';
+import './item-details.css';
 
-const PersonView = ({person}) => {
+const ItemView = ({ item }) => {
     const {
             id,
             name,
             gender,
             birthYear,
             eyeColor
-        } = person
+        } = item
     return (
         <React.Fragment>
-                <img className="person-image"
-                src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
-                alt="person"/>
+                <img className="item-image"
+                    src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
+                    alt="person"/>
                 <div className="card-body">
             <h4>{ name }</h4>
                 <ul className="list-group list-group-flush">
@@ -38,4 +38,4 @@ const PersonView = ({person}) => {
     )
 }
 
-export default PersonView
+export default ItemView
