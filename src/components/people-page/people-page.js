@@ -22,11 +22,11 @@ export default class PeoplePage extends Component {
     render() {
         const itemList = (
             <ItemList 
-                                onItemSelected={this.onItemSelected}
-                                getData={this.swapiService.getAllPeople}
-                                >
-                                    {({name, gender, birthYear}) => `${name} - ${gender}, ${birthYear}`}
-                                </ItemList>
+                onItemSelected={this.onItemSelected}
+                getData={this.swapiService.getAllPeople}
+                >
+                    {(item) => `${item.name} - ${item.gender}, ${item.birthYear}`}
+                </ItemList>
         )
 
         const itemDetails = (
