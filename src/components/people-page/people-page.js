@@ -32,7 +32,7 @@ export default class PeoplePage extends Component {
         const itemDetails = (
             <ItemDetails itemId={ this.state.selectedItem }/>
         )
-
+л
         return (
             <ErrorBoundry>
                 <Row left={itemList} right={itemDetails}/>
