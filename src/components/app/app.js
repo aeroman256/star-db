@@ -61,5 +61,4 @@ export default class App extends Component {
                 <PeoplePage />
             </div>
         )
-    }
 }
