@@ -11,6 +11,7 @@ export default class ItemDetails extends Component {
 
     state = {
         item: null,
+        image: null,
         loading: true
     }
 
@@ -30,27 +31,27 @@ export default class ItemDetails extends Component {
     onItemLoaded = (item) => {
         this.setState({
             item,
+            image: this.props.getImageUrl(item),
             loading: false
         })
     }
 
     updateItem() {
-        const { itemId } = this.props
+        const { itemId, getData } = this.props
         if (!itemId) {
             return
         }
-        this.swapiService
-            .getPerson(itemId)
+        getData(itemId)
             .then(this.onItemLoaded)
     }
 
     render() {
-        const { loading } = this.state
+        const { loading, image } = this.state
         if (!this.state.item) {
             return <span>Select a person from a list</span>
         }
         const spinner = loading ? <Spinner /> : null
-        const content = !loading ? <ItemView  item={this.state.item} /> : null
+        const content = !loading ? <ItemView  item={this.state.item} image={image} /> : null
         return (
             <div className="item-details card">
                 <React.Fragment>

@@ -3,19 +3,22 @@ import ErrorButton from '../error-button'
 
 import './item-details.css';
 
-const ItemView = ({ item }) => {
+const ItemView = (props) => {
+    console.log(props)
     const {
-            id,
             name,
             gender,
             birthYear,
-            eyeColor
-        } = item
+            eyeColor,
+        } = props.item
+    
+    const { image } = props
     return (
         <React.Fragment>
                 <img className="item-image"
-                    src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
-                    alt="person"/>
+                    src={ image } 
+                    alt="person"
+                />
                 <div className="card-body">
             <h4>{ name }</h4>
                 <ul className="list-group list-group-flush">
