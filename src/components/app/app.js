@@ -7,7 +7,7 @@ import Row from '../row'
 
 import './app.css'
 import ItemDetails from '../item-details';
-import { Record } from '../item-details/item-details-view'
+import { Record } from '../item-details/item-details'
 
 export default class App extends Component {
 
@@ -57,15 +57,20 @@ export default class App extends Component {
             >
                 <Record field="gender" label="Gender" />
                 <Record field="eyeColor" label="Eye color" />
+                <Record field="birthYear" label="Birth Year" />
             </ItemDetails>
         )
         
         const starshipDetails = (
             <ItemDetails 
-                itemId={15}
+                itemId={12}
                 getData={ getStarship }
                 getImageUrl={ getStarshipImage }    
-            />
+            >
+                <Record field="model" label="Model" />
+                <Record field="length" label="Lehgth" />
+                <Record field="crew" label="Crew" />
+            </ItemDetails>
         )
         const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null
         return (
