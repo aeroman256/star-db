@@ -3,6 +3,17 @@ import ErrorButton from '../error-button'
 
 import './item-details.css';
 
+const Record = ({ field, label}) => {
+    return(
+        <li className="list-group-item">
+            <span className="term">{ label }</span>
+            <span>{ field }</span>
+        </li>
+    )
+}
+
+export { Record }
+
 const ItemView = (props) => {
     console.log(props)
     const {

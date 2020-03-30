@@ -5,6 +5,10 @@ import SwapiService from '../../services/swapi-service'
 
 import './item-details.css';
 
+
+
+
+
 export default class ItemDetails extends Component {
     
     swapiService = new SwapiService()
@@ -50,6 +54,7 @@ export default class ItemDetails extends Component {
         if (!this.state.item) {
             return <span>Select a person from a list</span>
         }
+
         const spinner = loading ? <Spinner /> : null
         const content = !loading ? <ItemView  item={this.state.item} image={image} /> : null
         return (
