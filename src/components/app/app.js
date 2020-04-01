@@ -4,11 +4,19 @@ import RandomPlanet from '../random-planet'
 import ErrorIndicator from '../error-indicator'
 import SwapiService from '../../services/swapi-service'
 import Row from '../row'
+import {
+    PersonList,
+    StarshipList,
+    PlanetList,
+    PersonDetails,
+    StarshipDetails,
+    PlanetDetails
+} from '../sw-components'
 
 import './app.css'
 import ItemDetails from '../item-details';
 import { Record } from '../item-details/item-details'
-import ItemList from '../item-list/item-list';
+
 
 export default class App extends Component {
 
@@ -43,7 +51,8 @@ export default class App extends Component {
             getPersonImage,
             getStarship,
             getStarshipImage,
-            getAllPeople
+            getAllPeople,
+            getAllStarships
         } = this.swapiService
         if (hasError) {
             return(
@@ -93,9 +102,25 @@ export default class App extends Component {
                     left={personDetails}
                     right={starshipDetails}
                 /> */}
-                <ItemList getData={getAllPeople}>
+                {/* <ItemList getData={getAllPeople}>
                     {(item) => `${item.name}`}
-                </ItemList>
+                </ItemList> */}
+
+
+                {/* <PersonList>
+                    {(item) => `${item.name}`}
+                </PersonList>
+
+                <StarshipList>
+                    {(item) => `${item.name}`}
+                </StarshipList>
+
+                <PlanetList>
+                    {(item) => `${item.name}`}
+                </PlanetList> */}
+                <PersonDetails itemId={3} />
+                <PlanetDetails itemId={11} />
+                <StarshipDetails itemId={5} />
             </div>
         )
         }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import ItemView from './item-details-view'
 import Spinner from '../spinner'
 import SwapiService from '../../services/swapi-service'
 import ErrorButton from '../error-button'
