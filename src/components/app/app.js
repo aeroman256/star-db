@@ -8,6 +8,7 @@ import Row from '../row'
 import './app.css'
 import ItemDetails from '../item-details';
 import { Record } from '../item-details/item-details'
+import ItemList from '../item-list/item-list';
 
 export default class App extends Component {
 
@@ -41,7 +42,8 @@ export default class App extends Component {
             getPerson,
             getPersonImage,
             getStarship,
-            getStarshipImage
+            getStarshipImage,
+            getAllPeople
         } = this.swapiService
         if (hasError) {
             return(
@@ -77,7 +79,8 @@ export default class App extends Component {
             <div>
                 <Header />
                 { planet }
-                {/* <div className="row">
+                {/*
+                <div className="row">
                     <button
                         className="toggle-planet btn btn-warning btn-lg"
                         onClick={this.toggleRandomPlanet}>
@@ -86,11 +89,22 @@ export default class App extends Component {
                     <ErrorButton />
                 </div>
                 <PeoplePage /> */}
-                <Row 
+                {/* <Row 
                     left={personDetails}
                     right={starshipDetails}
-                />
+                /> */}
+                <ItemList getData={getAllPeople}>
+                    {(item) => `${item.name}`}
+                </ItemList>
             </div>
         )
         }
 }
+
+const f = (a) => {
+    return (b) => 
+        console.log(a + b)
+    
+} 
+
+f(1)(2)
