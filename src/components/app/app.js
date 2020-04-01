@@ -100,11 +100,3 @@ export default class App extends Component {
         )
         }
 }
-
-const f = (a) => {
-    return (b) => 
-        console.log(a + b)
-    
-} 
-
-f(1)(2)

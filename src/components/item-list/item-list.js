@@ -2,57 +2,65 @@ import React, { Component } from 'react'
 import Spinner from '../spinner'
 
 import './item-list.css'
+import SwapiService from '../../services/swapi-service'
 
-export default class ItemList extends Component {
-    state = {
-        itemList: null
-    }
+const ItemList = (props) => {
+   
+    const { data, onItemSelected, children: renderLabel  } = props
+    const items = data.map((item) => {
+        const label = renderLabel(item)
+        const { id } = item
+        return (
+            <li className='list-group-item'
+                key={ id }
+                onClick = {() => onItemSelected(id)}
+                >
+                { label }
+            </li>
+        )
+    })
 
-    componentDidMount() {
-        const { getData } = this.props
-        getData()
-            .then((itemList) => {
-                this.setState({
-                    itemList
-                })
-            })
-            .catch(this.Error)
-    }
+    return (
+        <div>
+            <ul className='item-list list-group'>
+                { items }
+            </ul>
+        </div>
+    )
+}
 
-    renderItems = (arr) => {
-        return arr.map((item) => {
-            const label = this.props.children(item)
-            const { id } = item
-            return (
-                <li className='list-group-item'
-                    key={ id }
-                    onClick = {() => this.props.onItemSelected(id)}
-                    >
-                    { label }
-                </li>
-            )
-        })
-    }
-
-    render() {
-        const { itemList } = this.state
+const withData = (View, getData) => {
+    return class extends Component {
+        state = {
+            data: null
+        }
     
-        if (!itemList) {
+        componentDidMount() {
+            getData()
+                .then((data) => {
+                    this.setState({
+                        data
+                    })
+                })
+                .catch(this.Error)
+        }
+    
+        render() {
+            const { data } = this.state
+    
+            if (!data) {
+                return (
+                    <Spinner />
+                )
+            }
+
             return (
-                <Spinner />
+                <ItemList { ...this.props } data={ data }/>
             )
         }
-        const items = this.renderItems(itemList)
-
-        return (
-            <div>
-                <ul className='item-list list-group'>
-                    { items }
-                </ul>
-            </div>
-        )
     }
 }
 
+const { getAllPeople } = new SwapiService();
 
-
+export default withData(ItemList, getAllPeople)
