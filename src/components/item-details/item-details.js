@@ -15,79 +15,24 @@ const Record = ({ item, field, label}) => {
 
 export { Record }
 
-export default class ItemDetails extends Component {
-    
-    swapiService = new SwapiService()
+const ItemDetails = ({ item, image, children: viewRecord }) => {
 
-    state = {
-        item: null,
-        image: null,
-        loading: true
-    }
-
-    componentDidMount(){
-        this.updateItem()
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.itemId !== prevProps.itemId) {//critical!!!
-            this.setState({
-                loading: true
-            })
-            this.updateItem();
-        }
-    }
-
-    onItemLoaded = (item) => {
-        this.setState({
-            item,
-            image: this.props.getImageUrl(item),
-            loading: false
-        })
-    }
-
-    updateItem() {
-        const { itemId, getData } = this.props
-        if (!itemId) {
-            return
-        }
-        getData(itemId)
-            .then(this.onItemLoaded)
-    }
-
-    render() {
-        const { loading, image, item } = this.state
-        if (!this.state.item) {
-            return <span>Select a person from a list</span>
-        }
-        const { name } = this.state.item
-
-        const itemView = (
-            <React.Fragment>
+        return (
+            <div className="item-details card">
                 <img className="item-image"
                     src={ image } 
                     alt="person"
                 />
                 <div className="card-body">
-                <h4>{ name }</h4>
+                <h4>{ item.name }</h4>
                 <ul className="list-group list-group-flush">
-                    {React.Children.map(this.props.children, (child, idx) => {
+                    {React.Children.map(viewRecord, (child) => {
                         return React.cloneElement(child, { item })})}
                 </ul>
                 <ErrorButton />
                 </div>
-            </React.Fragment>
-        )
-
-        const spinner = loading ? <Spinner /> : null
-        const content = !loading ? itemView : null
-        return (
-            <div className="item-details card">
-                <React.Fragment>
-                    {spinner}
-                    {content}
-                </React.Fragment>
             </div>
         )
     }
-}
+
+export default ItemDetails

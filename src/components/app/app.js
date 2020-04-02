@@ -118,9 +118,9 @@ export default class App extends Component {
                 <PlanetList>
                     {(item) => `${item.name}`}
                 </PlanetList> */}
-                <PersonDetails itemId={3} />
-                <PlanetDetails itemId={11} />
-                <StarshipDetails itemId={5} />
+                <PersonDetails 
+                    
+                />
             </div>
         )
         }

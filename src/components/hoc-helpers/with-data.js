@@ -9,7 +9,7 @@ const withData = (View, getData) => {
         }
     
         componentDidMount() {
-            getData()
+            getData() 
                 .then((data) => {
                     this.setState({
                         data
