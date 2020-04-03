@@ -107,7 +107,7 @@ export default class App extends Component {
                 </ItemList> */}
 
 
-                {/* <PersonList>
+                <PersonList>
                     {(item) => `${item.name}`}
                 </PersonList>
 
@@ -117,7 +117,7 @@ export default class App extends Component {
 
                 <PlanetList>
                     {(item) => `${item.name}`}
-                </PlanetList> */}
+                </PlanetList>
                 <PersonDetails itemId={3} />
                 <PlanetDetails itemId={11} />
                 <StarshipDetails itemId={5} />
