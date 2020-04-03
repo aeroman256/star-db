@@ -13,7 +13,19 @@ const {
     getPlanetImage
 } = swapiService
 
-const PersonDetails = withDataDetails(itemId, getPerson, getPersonImage)
+
+const PersonDetails = ({itemId}) => {
+    return (
+        <ItemDetails 
+            itemId={itemId}
+            getData={ getPerson }
+            getImageUrl={ getPersonImage }>
+                <Record field="gender" label="Gender" />
+                <Record field="eyeColor" label="Eye color" />
+                <Record field="birthYear" label="Birth Year" />
+        </ItemDetails>
+    )
+}
 
 const StarshipDetails = ({itemId}) => {
     return (
