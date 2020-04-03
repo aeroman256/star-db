@@ -11,6 +11,8 @@ const {
     getStarshipImage,
     getPlanetImage
 } = swapiService
+
+
 const PersonDetails = ({itemId}) => {
     return (
         <ItemDetails 

@@ -102,22 +102,12 @@ export default class App extends Component {
                     left={personDetails}
                     right={starshipDetails}
                 /> */}
-                {/* <ItemList getData={getAllPeople}>
-                    {(item) => `${item.name}`}
-                </ItemList> */}
+                
 
 
-                <PersonList>
-                    {(item) => `${item.name}`}
-                </PersonList>
-
-                <StarshipList>
-                    {(item) => `${item.name}`}
-                </StarshipList>
-
-                <PlanetList>
-                    {(item) => `${item.name}`}
-                </PlanetList>
+                <PersonList />
+                <StarshipList />
+                <PlanetList />
                 <PersonDetails itemId={3} />
                 <PlanetDetails itemId={11} />
                 <StarshipDetails itemId={5} />
